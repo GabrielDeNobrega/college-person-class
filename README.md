@@ -1,5 +1,5 @@
 <h1 align="center">
-  📅 Object Oriented Programming - Exercise With Dates 📅
+  📅 Object Oriented Programming - Dates 📅
 </h1>
 
 <h1 align="center">
