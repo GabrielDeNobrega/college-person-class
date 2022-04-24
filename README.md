@@ -24,10 +24,6 @@
 <p align="center" width="100%">
   
   <br>
-  <img width="800" align="center" src="https://user-images.githubusercontent.com/84252664/164801077-369faa29-0f14-4fd5-aade-3cc5f28e3592.png"/>
-  
-  <h4>
-    I know that it says double on the return of the UML method. However, I made it return a long value in the code because I'm returning a number of years, therefore it does not need to be a double returning method.
-  </h4>
+  <img width="800" align="center" src="https://user-images.githubusercontent.com/84252664/164984568-4cb62426-8512-493d-81c1-c803512f810b.png"/>
 
 </p>
