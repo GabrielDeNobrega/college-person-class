@@ -1,22 +1,22 @@
 package model.entities;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.concurrent.TimeUnit;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 
 public class Person {
 
-	private static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+	private static DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
 	private String name;
-	private Date birth;
+	private LocalDate birth;
 	private Double height;
 
 	public Person() {
 
 	}
 
-	public Person(String name, Date birth, Double height) {
+	public Person(String name, LocalDate birth, Double height) {
 		this.name = name;
 		this.birth = birth;
 		this.height = height;
@@ -30,11 +30,11 @@ public class Person {
 		this.name = name;
 	}
 
-	public Date getBirth() {
+	public LocalDate getBirth() {
 		return birth;
 	}
 
-	public void setBirth(Date birth) {
+	public void setBirth(LocalDate birth) {
 		this.birth = birth;
 	}
 
@@ -47,18 +47,14 @@ public class Person {
 	}
 
 	private long[] calculateAge() {
-		Date now = new Date();
+		LocalDate today = LocalDate.now();
 		long[] finalAge = new long[3];
 
-		long age = now.getTime() - birth.getTime();
-		age = TimeUnit.DAYS.convert(age, TimeUnit.MILLISECONDS);
+		Period p = Period.between(birth, today);
 
-		long years = age / 365;
-		long month = (age % 365) / 30;
-
-		finalAge[0] = years;
-		finalAge[1] = month;
-		finalAge[2] = month % 30;
+		finalAge[0] = p.getYears();
+		finalAge[1] = p.getMonths();
+		finalAge[2] = p.getDays();
 
 		return finalAge;
 
@@ -70,7 +66,7 @@ public class Person {
 
 		sb.append("Person's Data:\n");
 		sb.append("Name : " + name + "\n");
-		sb.append("Birth: " + sdf.format(birth) + "\n");
+		sb.append("Birth: " + dtf.format(birth) + "\n");
 		sb.append("Age: " + calculateAge()[0] + " years " + calculateAge()[1] + " months " + calculateAge()[2]
 				+ " days\n");
 		sb.append("Height: " + String.format("%.2f%n", height) + "\n");

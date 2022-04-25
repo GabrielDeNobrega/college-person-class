@@ -1,8 +1,7 @@
 package application;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.InputMismatchException;
 import java.util.Locale;
 import java.util.Scanner;
@@ -13,7 +12,7 @@ public class Program {
 
 	public static void main(String[] args) {
 
-		final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
 		Locale.setDefault(Locale.US);
 		Scanner sc = new Scanner(System.in);
@@ -25,7 +24,7 @@ public class Program {
 			String name = sc.nextLine();
 
 			System.out.print("Birth (DD/MM/YYYY): ");
-			Date birth = sdf.parse(sc.next());
+			LocalDate birth = LocalDate.parse(sc.next(), dtf);
 
 			System.out.print("Height: ");
 			Double height = sc.nextDouble();
@@ -35,8 +34,6 @@ public class Program {
 			System.out.println();
 			System.out.println(per);
 
-		} catch (ParseException e) {
-			System.out.println("Invalid Date format.");
 		} catch (InputMismatchException e) {
 			System.out.println("Invalid input.");
 		} catch (RuntimeException e) {
